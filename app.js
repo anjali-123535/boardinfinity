@@ -11,6 +11,11 @@ const app=express()
 //body-parser: A middleware to parse incoming request inputs into our req.body object
 app.use(bodyParser.json())
 
+
+app.get("/",(req,res)=>{
+  res.send("BoardInfinity Assignment")
+})
+
 app.use('/', taskRouter)
 mongoose
   .connect(DB, {
@@ -20,9 +25,9 @@ mongoose
   .then(() => console.log('DB connection successful!')).catch(err=>{
       console.log("error",err);
   })
-
+require('./services/cron')
 const port=process.env.port || 3000
 app.listen(port,()=>{
-    console.log(`App running on port ${port}`);
+    console.log(`App running on port http://localhost:${port}`);
     });
 
