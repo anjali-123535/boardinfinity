@@ -1,33 +1,39 @@
-const express=require('express')
-const dotenv=require('dotenv')
-const taskRouter=require('./routes/taskRouter')
-const mongoose=require('mongoose');
-const bodyParser = require('body-parser');
+const express = require('express')
+const app = express()
+
+const dotenv = require('dotenv')
 dotenv.config({ path: './config.env' });
 
-const DB=process.env.DATABASE;
+const taskRouter = require('./routes/taskRouter')
+app.use('/', taskRouter)
 
-const app=express()
+const mongoose = require('mongoose');
+
 //body-parser: A middleware to parse incoming request inputs into our req.body object
+const bodyParser = require('body-parser');
 app.use(bodyParser.json())
 
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
   res.send("BoardInfinity Assignment")
 })
 
-app.use('/', taskRouter)
+
+const DB = process.env.DATABASE;
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  .then(() => console.log('DB connection successful!')).catch(err=>{
-      console.log("error",err);
+  .then(() => console.log('DB connection successful!')).catch(err => {
+    console.log("error", err);
   })
+
+// require cron job 
 require('./services/cron')
-const port=process.env.port || 3000
-app.listen(port,()=>{
-    console.log(`App running on port http://localhost:${port}`);
-    });
+
+const port = process.env.port || 3000
+app.listen(port, () => {
+  console.log(`App running on port http://localhost:${port}`);
+});
 

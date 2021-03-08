@@ -1,27 +1,27 @@
 const Task = require('./../models/taskModel')
 
+// Create and Save a NEW TASK
 exports.createTask = async (req, res) => {
   try {
-    const date=new Date();
-    const newDate=new Date(date.getTime()+req.body.duration*60000);
-    req.body.expireAt=newDate;
+    const date = new Date();
+    const newDate = new Date(date.getTime() + req.body.duration * 60 * 1000);
+    req.body.expireAt = newDate;
     const newTask = await Task.create(req.body)
     console.log(req.body.name)
     res.status(201).json({
       status: "success",
-      data: {
-        task: newTask
-      }
+      message: "Task successfully created"
     })
   }
   catch (err) {
     res.status(400).json({
       status: "fail",
-      message: [err, "task not created"]
+      message: "Task not created"
     })
   }
 }
 
+// Retrieve and return ALL TASKS from the database
 exports.getAllTasks = async (req, res) => {
   try {
     const tasks = await Task.find();
@@ -35,7 +35,7 @@ exports.getAllTasks = async (req, res) => {
   } catch (err) {
     res.status(404).json({
       status: 'fail',
-      message: "not able to fetch all the tasks"
+      message: "Not able to fetch all the Tasks"
     });
   }
 };
