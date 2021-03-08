@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 })
 
 
-const DB = process.env.DATABASE;
+const DB = "mongodb+srv://Anjali:ASBOmdM0hdt1XFUl@cluster0.ctr0y.mongodb.net/boardinfinity?retryWrites=true&w=majority";
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
