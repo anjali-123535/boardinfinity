@@ -1,10 +1,10 @@
 # LIVE LINK #
-##https://boardinfinity-todo.herokuapp.com/##
+## https://boardinfinity-todo.herokuapp.com/ ##
 
 *An example about how to create a RESTful API using Express.js. The four CRUD operations are provided: create, read, update and delete records. This server keeps an array of JSON objects in memory and runs the CRUD operations on it. If the server is restarted everything returns to the initial configuration.*
 
-#Installation
-##Install Dependencies
+# Installation
+## Install Dependencies
 
 Node.js (version 6.x is recommended)
 *  create a folder for your project*
@@ -18,16 +18,16 @@ Node.js (version 6.x is recommended)
  *PORT:8000*
  *DATABASE:SRV which you will get while you are connecting Application with the Atlas*
 
-#Available end-points#
-##GET /list##
-###Gets all the available tasks.###
+# Available end-points #
+## GET /list ##
+### Gets all the available tasks. ###
 
-##POST /add##
-###Create a task.###
+## POST /add ##
+### Create a task. ###
 
-#Headers#
+# Headers #
 
-##Content-Type : application/json##
+## Content-Type : application/json ##
 //duration is in minutes
 Request body (raw)
 
